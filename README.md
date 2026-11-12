@@ -76,4 +76,21 @@ public class DialogoNuevaEstacion extends JDialog{
 private final RedTransporte red;
 private final JTextField campold = new JTextField (14);
 private final JTextField campoNombre = new JTextField (14);
-private final JComboBox 
+private final JComboBox<string> comboLinea;
+private final JComboBox<string> comboZona;
+private final JSpinner spinnerCapacidad = new JSpinner (new SpinnerNumberModel(10000, 0, 1000000, 500));
+private final JComboBox<estacion> comboVecina;
+private final JSpinner spinnerTiempo = new JSPinner (new SpinnerNumberModel(2.0, 0.5, 999.0, 0.5));
+private final DefaultListModel<string> modeloConexiones = new DefaultListModel<>();
+private final JList<string> listaConexiones = new Jlist<>(modeloConexiones);
+private final ListaEnlazada<arista> conexiones = new ListaEnlazada<>();
+private Estacion resultado;
+public DialogoNuevaEstacion(Frame padre, RedTransporte red){
+super(padre, "Agregar Estacion", true);
+this.red = red;
+comboLinea = new JComboBox<>(red.obtenerLineas());
+comboLinea.setEditable(true);
+comboZona = new JComboBox<>(red.obtenerZonas());
+comboZona.setEditable(true);
+comboVecina = new JComboBox<>(red.obtenerEstacionesOrdenadas());
+JPanel datos = Dialogos.formulario(new String]{"ID:", "Nombre:", "Linea:", "Zona:", "Capacidad:"}, new JComponent ]{campold, campoNombre, comboLinea, comboZona, spinnerCapacidad});

@@ -94,3 +94,8 @@ comboZona = new JComboBox<>(red.obtenerZonas());
 comboZona.setEditable(true);
 comboVecina = new JComboBox<>(red.obtenerEstacionesOrdenadas());
 JPanel datos = Dialogos.formulario(new String]{"ID:", "Nombre:", "Linea:", "Zona:", "Capacidad:"}, new JComponent ]{campold, campoNombre, comboLinea, comboZona, spinnerCapacidad});
+datos.setBorder(BorderFactory.createTitledBorder("1.Datos de la Estacion"));
+JPanel conex = new JPanel(new BorderLayout(6, 6));
+conex.setBorder(BorderFactory.createTitledBorder("2. Conexiones con estaciones existentes"));
+JPanel fila = new JPanel(new FlowLayout(FlowLayout.LEFT, 6, 0));
+fila.add(new JLabel("Estacion:"));

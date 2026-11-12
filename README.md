@@ -27,3 +27,49 @@ setRolloverEnable(true);
 setHorizontalAlignments(SwingConstants.LEFT);
 setMargin(new Insets(8,14,8,14));
 setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR))}
+public Dimension getMaximumSize(){
+return new Dimension(Integer.MAX_VALUE, getPreferredSize().height);
+}
+protected void paintComponent(Graphics g){
+Graphics2D g2 = (Graphics2D) g.create ();
+g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+Color color = fondo;
+if (!isEnabled()){
+color = fondo.darker();
+} else if (getmodel().isPressed()){
+color = fondoHover.darker();
+} else if (getModel().isRollover()){
+color = fondoHover;
+}
+g2.setColor(color);
+g2.fillRoundRect(0,o,getWidth(), getHeight(), 10, 10);
+g2.dispose();
+super.paintComponent(g);
+}
+}
+
+package urbanroute.interfaz;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Frame;
+import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
+import urbanroute.estructuras.Arista;
+import urbanroute.estructuras.ListaEnlazada;
+import urbanroute.modelo.Estacion;
+import urbanroute.modelo.Formato;
+import urbanroute.modelo,RedTransporte;
+public class DialogoNuevaEstacion extends JDialog 

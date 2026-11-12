@@ -72,4 +72,8 @@ import urbanroute.estructuras.ListaEnlazada;
 import urbanroute.modelo.Estacion;
 import urbanroute.modelo.Formato;
 import urbanroute.modelo,RedTransporte;
-public class DialogoNuevaEstacion extends JDialog 
+public class DialogoNuevaEstacion extends JDialog{
+private final RedTransporte red;
+private final JTextField campold = new JTextField (14);
+private final JTextField campoNombre = new JTextField (14);
+private final JComboBox 

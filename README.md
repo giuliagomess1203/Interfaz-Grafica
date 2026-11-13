@@ -295,5 +295,12 @@ public static Conexion pedirConexionAEliminar(Component padre, RedTransporte red
 }
 orgen.addActionListener(e- actualizarDestino.run());
 actualizarDestino.run();
-JPanel panel = formulario(new string
+JPanel panel = formulario(new string[]{"Estacion A:", "Conectada con:"}, new JComponent[]{origen, destino});
+int opcion = JOptionPane.showConfirmDialog(padre, panel, "Eliminar conexion", JOptionPan.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+Estacion a = (estacion) origen.getSelectedItem();
+Estacion b = (estacion) destino.getSelectedItem();
+if (opcion != JOptionPane-OK_OPTION || a == null || b == null){return null;
 }
+return new conexion(a.getId(), b.getId(), 0);
+}
+public static string

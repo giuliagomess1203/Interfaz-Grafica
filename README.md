@@ -99,3 +99,17 @@ JPanel conex = new JPanel(new BorderLayout(6, 6));
 conex.setBorder(BorderFactory.createTitledBorder("2. Conexiones con estaciones existentes"));
 JPanel fila = new JPanel(new FlowLayout(FlowLayout.LEFT, 6, 0));
 fila.add(new JLabel("Estacion:"));
+comboVecina.setPreferredSize(new Dimension(220, comboVecina.getPreferredSize().height));
+fila.add(comboVecina);
+fila.add(new JLabel("Min:"));
+fila.add(spinnerTiempo);
+JButton agregar = new JButton ("Añadir");
+aregar.addActionListener(e-> agregarConexion());
+fila.add(agregar);
+JButton quitar = new JButton("Quitar seleccionada");
+quitar.addActionListener(e-> quitarConexion());
+listaConexiones.setVisibleRowCount(5);
+conex.add(fila, borderLayout.NORTH);
+conex.add(new JScrollPane(ListaConexiones), BorderLayout.CENTER);
+conex.add(quitar, BorderLayout.SOUTH);
+if(comboVecina.getItemCount()==0){

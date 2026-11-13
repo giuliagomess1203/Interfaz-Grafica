@@ -142,3 +142,14 @@ pulic ListaEnlazada<arista> getConexiones(){
     return conexiones;
 }
 private void agregarConexion(){
+Estacion vecina = (Estacion) comboVecina.getSelectedItem();
+if (vecina == null){
+    return;
+}
+double minutos = ((number) spinnerTiemp.getValue().doubleValue(;
+Arista existente = conexiones.buscar(a-> a.getDestino().equals(vecina.getId()));
+String texto = vecina + " - " + Formato.minutos(minutos)+ "min";
+if (existente != null){
+    existente.setTiempo(minutos);
+
+    for(int i = 0; i

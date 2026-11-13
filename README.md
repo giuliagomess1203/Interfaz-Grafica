@@ -123,3 +123,22 @@ JButton aceptar = new JButton("Agregar Estacion");
 aceptar.add.ActionListener(e-> aceptar());
 botones.add(cancelar);
 botones.add(aceptar);
+getRootPane().setDefaultButton(aceptar);
+JPanel contenido = new JPanel(new BorderLayout(8,8));
+contenido.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+contenido.add(datos, BorderLayout.NORTH);
+contenido.add(conex, BorderLayout.CENTER);
+contenido.add(botones, BorderLayout.SOUTH);
+setContentPane(contenido);
+pack();
+setMinimumSize(getSize());
+setLocationRelativeTo(padre);
+}
+public Estacion mostrar(){
+ setVisible(true);
+ return resultado;
+}
+pulic ListaEnlazada<arista> getConexiones(){
+    return conexiones;
+}
+private void agregarConexion(){

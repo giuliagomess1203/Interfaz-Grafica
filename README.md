@@ -191,4 +191,50 @@ if (id.contains(" ")){
     return;
 }
 if (red.existeId(id)){
-    Dialogos.error(This, "Ya existe una estacion con el ID 
+    Dialogos.error(This, "Ya existe una estacion con el ID \""+ id + "\".");
+    return;
+}
+if(red.existeNombre(nombre)){
+    Dialogos.error(this, "Ya existe una estacion llamada  \"" + nombre + "\".");
+    return;
+}
+if(conexiones.estaVacia()){
+    int r = JOptionPane.showConfirmDialog(this, "La estacion no tiene conexiones y quedara aislada.\n ¿Desea agregarla de todas formas?", "Estacion sin conexiones", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+    if (r != JOptionPane.YES_OPTION){ 
+        return;
+    }
+}
+int capacidad = ((number) spinnerCapacidad.getValue()).intValue();
+resultado = new Estacion(id, nombre, linea, zona, capacidad);
+dispose();
+}
+private static String textoCombo (JComboBox<string> combo){
+    Object Valor = combo.getEditor().getItem();
+    return valor == null ?"": valor.toString().trim();
+}
+private static boolean contieneSeparador(String texto){
+    return texto.indexOf(",") >= 0 || texto.indexOf (" \n") >= 0;
+}
+}
+package urbanroute.interfaz
+import java.awt.Component;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
+import urbanroute.estructuras.conexion;
+import urbanroute.estructuas.ListaEnlazada;
+import urbanroute.estructuras.Nodo;
+import urbanroute.modelo.Estacion;
+import urbanroute.modelo.Formato;
+import urbanroute..modelo.RedTransporte;
+public final class Dialogos {
+    private Dialogos(){
+    }
+public static Estacion elegirEstacion(component padre, String titulo, String mensaje, Estacion 

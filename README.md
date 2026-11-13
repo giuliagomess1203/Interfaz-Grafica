@@ -267,8 +267,33 @@ public static Conexion pedirNuevaConexion(Component padre, RedTransporte red, Es
         return null;
     }
     if (a.equals(b)){
-        error(padre, "Una estacion no puede conectarse consigo misma. 
+        error(padre, "Una estacion no puede conectarse consigo misma.\n Eliga dos estaciones distintas.");
+        continue;
     }
+    if (red.getGrafo().existeArista(a.getId(), b.getId())){
+        double actual = red.getGrafo().buscarAista(a.getId(), b.getId()).getTiempo();
+        int r = JOptionPane.showConfirmDialog(padre, "La conexion" + a.getId() + "-" + b.getId() + "ya existe ("+ Formato.minutos(actual) + "min".\n ¿Desea cambiar su tiempo a "+ Formato.minutos(minutos) + "min?", "Conexion existente", JOptionPane.QUESTION_MESSAGE);
+        if (r != JOptionPane.YES_OPTION){
+            continue;
+        }
+    }
+    return new Conexion (a.getId(), b.getId(), minutos);
     }
 }
+public static Conexion pedirConexionAEliminar(Component padre, RedTransporte red, Estacionestaciones){
+    JComboBox<estacion> origen = new JComboBox <>(estaciones);
+    JComboBox<estacion> destino = new <>();
+    Runnable actualizarDestino =()->{
+        destino.removeAllItems();
+        Estacion o = (Estacion) origen.getSelectedItem();
+        if (o != null) { 
+            ListaEnlazada<estacion> vecinas = red.obtenerVecinas(o.getId());
+            for(Nodo<estacion> n = vecinas.getCabeza(); n != null; n= n.getSiguiente()){
+                destino.addItem(n.getDato());
+            }
+    }
+}
+orgen.addActionListener(e- actualizarDestino.run());
+actualizarDestino.run();
+JPanel panel = formulario(new string
 }

@@ -113,3 +113,13 @@ conex.add(fila, borderLayout.NORTH);
 conex.add(new JScrollPane(ListaConexiones), BorderLayout.CENTER);
 conex.add(quitar, BorderLayout.SOUTH);
 if(comboVecina.getItemCount()==0){
+    agregar.setEnable(false);
+    comboVecina.setEnable(false);
+}
+JPanel botones = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+JButton cancelar = new JButton("Agregar estacion");
+cancelar.addActionListener(e-> dispose());
+JButton aceptar = new JButton("Agregar Estacion");
+aceptar.add.ActionListener(e-> aceptar());
+botones.add(cancelar);
+botones.add(aceptar);

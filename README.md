@@ -303,4 +303,9 @@ if (opcion != JOptionPane-OK_OPTION || a == null || b == null){return null;
 }
 return new conexion(a.getId(), b.getId(), 0);
 }
-public static string[]
+public static string[] pedirOrigenDestino(Component padre, Estacion[] estaciones, String origenPrevio, String destinoPrevio)
+{
+    JComboBox<estacion> origen = new JComboBox <>(estaciones);
+    JComboBox<estacion> destino = new
+    JComboBox<>(estaciones);
+}

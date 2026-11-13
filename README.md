@@ -151,5 +151,44 @@ Arista existente = conexiones.buscar(a-> a.getDestino().equals(vecina.getId()));
 String texto = vecina + " - " + Formato.minutos(minutos)+ "min";
 if (existente != null){
     existente.setTiempo(minutos);
-
-    for(int i = 0; i
+    for(int i = 0; i< conexiones.tamano(); i++){
+if (conexiones.obtener(i) == existente){
+    modelo.Conexiones.set(i,texto);
+}
+}
+return;
+}
+conexones.agregar(new Arista(vecina.getId(),minutos));
+modeloConexiones.addElement(texto);
+}
+private void quitarConexion(){
+ int indice = listaConexiones.getSelectedIndex();
+if (indice < 0){
+    Dialogos.error(this, "Seleccione en la lista la conexion que desea quitar.");
+    return;
+}
+Arista a = conexiones.obtener(indice);
+conexiones.eliminarPrimero(x-> x == a=);
+modeloConexiones.remove(indice);
+}
+private void aceptar(){
+    String id = campold.getText().trim().toUpperCase();
+    String nombre = campoNombre.getText().trim();
+    String linea = textoCombo(comboLinea);
+    String zona = textoCombo(comboZona);
+if (id.isEmpty() || linea.isEmpty()||
+zona.isEmpty()){
+    Dialogos.error(this, "Complete el ID, el nombre, la linea y la zona");
+    return;
+}
+if (contieneSeparador(id)|| contieneSeparador(nombre)||
+contiene.separador(linea)|| contieneSeparador(zona){
+    Dialogos.error(this "Los datos no pueden contener comas(,) porque se guardan en formato CSV.");
+    return;
+}
+if (id.contains(" ")){
+    Dialogos.error(this "El ID no puede contener espacios. Use guion bajo, por ejemplo: LA_PAZ");
+    return;
+}
+if (red.existeId(id)){
+    Dialogos.error(This, "Ya existe una estacion con el ID 

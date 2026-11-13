@@ -237,4 +237,38 @@ import urbanroute..modelo.RedTransporte;
 public final class Dialogos {
     private Dialogos(){
     }
-public static Estacion elegirEstacion(component padre, String titulo, String mensaje, Estacion 
+public static Estacion elegirEstacion(component padre, String titulo, String mensaje, Estacion [] estaciones){
+    JComboBox <estacion> combo = new
+    JComboBox<>(estaciones);
+    JPanel panel = formulario(new String[]{mensaje}, new JComponent[]{combo});
+    int opcion = JOptionPane.showConfirmDialog(padre, panel, titulo, JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+    return opcion == JOptionPane.OK_OPTION? (estacion)
+    combo.getSelectedItem(): null;
+}
+public static Conexion pedirNuevaConexion(Component padre, RedTransporte red, Estacion[] estaciones){
+    JComboBox<estacion> origen = new JComboBox <> (estaciones);
+    JComboBox<estacion> destino = new
+    JComboBox<>(estaciones);
+    if (estaciones.lenght > 1){
+        destino.setSelectedIndex(1);
+    }
+    JSpinner tiempo = new JSpinner(new SpinnerNumberModel(2.0, 0.5, 999.0, 0.5));
+    JPanel panel = formulario (new String[]{"Estacion A:", "Estacion B:", "Tiempo de traslado(min):"}
+    new JComponent[]{origen, destino, tiempo});
+    while(true){
+        int opcion = JOptionPane.showCOnfirmDialog(padre, panel, "Agregar Conexion", JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+    if (opcion != JOptionPane.OK_OPTION){
+        return null;
+    }
+    Estacion a = (estacion) origent.getSelectedItem();
+    Estacion b = (estacion) destino.getSelectedItem();
+    double minutos = ((number) timpo.getValue()).dobuleValue();
+    if (a == null || b == null){
+        return null;
+    }
+    if (a.equals(b)){
+        error(padre, "Una estacion no puede conectarse consigo misma. 
+    }
+    }
+}
+}
